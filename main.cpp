@@ -82,33 +82,30 @@ int main()
         {
             string code;
             int jmljual;
-            cin >> code;
-            cin >> jmljual;
+            cin >> code >> jmljual;
 
             bool found = false;
             for (auto &b : books)
             {
                 if (b.kode == code)
                 {
-                    b.stok -= jmljual;
-                    cout << ("Berhasil Terjual") << endl;
+                    found = true;
+                    if (jmljual <= b.stok)
+                    {
+                        b.stok -= jmljual;
+                        cout << "Berhasil Terjual" << endl;
+                    }
+                    else
+                    {
+                        cout << "JUMLAH TERLALU BANYAK" << endl;
+                    }
                     break;
                 }
-                else
-                {
-                    cout << ("BARANG TIDAK DITEMUKAN") << endl;
-                    break;
-                }
-                if (b.kode == code)
-                {
-                    b.stok -= jmljual;
-                    cout << ("Berhasil Terjual") << endl;
-                    break;
-                }
-                else if (jmljual > b.stok)
-                {
-                    cout << ("Berlebih hasil -") << endl;
-                }
+            }
+
+            if (!found)
+            {
+                cout << "BARANG TIDAK DITEMUKAN" << endl;
             }
         }
         else if (operation == "LAPORAN")
