@@ -78,7 +78,7 @@ int main()
             }
             if (!found)
             {
-                cout << "KODE TIDAK ADA" << endl;
+                cout << "BARANG TIDAK DITEMUKAN" << endl;
             }
             else if (found)
             {
