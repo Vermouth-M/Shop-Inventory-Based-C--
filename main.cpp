@@ -43,19 +43,19 @@ int main()
         if (operation == "TAMBAH")
         {
             cin >> b.kode >> b.nama >> b.stok >> b.harga;
-            bool exists = false;
+            bool found = false;
             for (auto &bk : books)
             {
                 if (bk.kode == b.kode)
                 {
-                    exists = true;
+                    found = true;
                     break;
                 }
             }
 
-            if (exists)
+            if (found)
             {
-                cout << "KODE SUDAH DIMASUKAN" << endl;
+                cout << "KODE SUDAH ADA" << endl;
             }
             else
             {
@@ -76,7 +76,15 @@ int main()
                     break;
                 }
             }
-            cout << (found ? "ADA" : "TIDAK ADA") << endl;
+            if (!found)
+            {
+                cout << "KODE TIDAK ADA" << endl;
+            }
+            else if (found)
+            {
+                cout << b.kode << " " << b.nama << " "
+                     << b.stok << " " << b.harga << endl;
+            }
         }
         else if (operation == "JUAL")
         {
@@ -93,11 +101,11 @@ int main()
                     if (jmljual <= b.stok)
                     {
                         b.stok -= jmljual;
-                        cout << "Berhasil Terjual" << endl;
+                        cout << "BERHASIL TERJUAL" << endl;
                     }
                     else
                     {
-                        cout << "JUMLAH TERLALU BANYAK" << endl;
+                        cout << "STOK TIDAK CUKUP" << endl;
                     }
                     break;
                 }
